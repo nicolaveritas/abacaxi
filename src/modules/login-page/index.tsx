@@ -4,18 +4,23 @@ import { Redirect, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectIdToken } from "../auth/redux";
 import { RootState } from "../../redux/store";
+import { FormWrapper, Header, Logo, StyledLoginPage } from "./elements";
+import { Text } from "../../components/elements";
 
 function LoginPage() {
-  const idToken = useSelector<RootState>((state) =>
-    selectIdToken(state.authReducer)
-  );
+  const idToken = useSelector((state: RootState) => selectIdToken(state.auth));
   const location = useLocation<{ from: { pathname: string } }>();
 
   return !idToken ? (
-    <>
-      <div>Welcome to PLAYTOMIC test</div>
-      <LoginButton />
-    </>
+    <StyledLoginPage>
+      <FormWrapper>
+        <Header>
+          <Logo />
+          <Text>Sign in</Text>
+        </Header>
+        <LoginButton />
+      </FormWrapper>
+    </StyledLoginPage>
   ) : (
     <Redirect
       to={{

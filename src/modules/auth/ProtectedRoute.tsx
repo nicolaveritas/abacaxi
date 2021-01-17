@@ -10,9 +10,7 @@ interface PrivateRouteProps {
 }
 
 function ProtectedRoute({ children, ...rest }: PrivateRouteProps) {
-  const idToken = useSelector<RootState>((state) =>
-    selectIdToken(state.authReducer)
-  );
+  const idToken = useSelector((state: RootState) => selectIdToken(state.auth));
   return (
     <Route
       {...rest}

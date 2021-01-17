@@ -1,7 +1,14 @@
 import React from "react";
+import { Title, Section, SectionHeader } from "../../components/elements";
 
 function SettingsPage() {
-  return <div>Hello SettingsPage!</div>;
+  return (
+    <Section>
+      <SectionHeader>
+        <Title>Hello Settings!</Title>
+      </SectionHeader>
+    </Section>
+  );
 }
 
 export default SettingsPage;

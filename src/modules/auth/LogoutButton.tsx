@@ -17,8 +17,9 @@ function LogoutButton() {
   return (
     <GoogleLogout
       clientId={CLIENT_ID}
-      buttonText="Logout"
       onLogoutSuccess={onLogoutSuccess}
+      icon={false}
+      buttonText="Logout"
     />
   );
 }

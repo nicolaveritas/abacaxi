@@ -1,38 +1,33 @@
 import React from "react";
-import { Link, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import DashboardPage from "../dashboard-page";
 import SettingsPage from "../settings-page";
-import LogoutButton from "../auth/LogoutButton";
+import Header from "./components/header";
+import Sidebar from "./components/sidebar";
+import { PageLayout, SectionsWrapper } from "./elements";
 
 function HomePage() {
   return (
-    <>
-      <ul>
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
-        <li>
-          <Link to="/settings">Settings</Link>
-        </li>
-
-        <LogoutButton />
-      </ul>
-
-      <Switch>
-        <Route path="/dashboard">
-          <DashboardPage />
-        </Route>
-        <Route path="/settings">
-          <SettingsPage />
-        </Route>
-        <Redirect
-          from="/"
-          to={{
-            pathname: "/dashboard",
-          }}
-        />
-      </Switch>
-    </>
+    <PageLayout>
+      <Header />
+      <SectionsWrapper>
+        <Sidebar />
+        <Switch>
+          <Route path="/dashboard">
+            <DashboardPage />
+          </Route>
+          <Route path="/settings">
+            <SettingsPage />
+          </Route>
+          <Redirect
+            from="/"
+            to={{
+              pathname: "/dashboard",
+            }}
+          />
+        </Switch>
+      </SectionsWrapper>
+    </PageLayout>
   );
 }
 

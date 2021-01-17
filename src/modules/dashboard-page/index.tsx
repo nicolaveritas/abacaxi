@@ -1,7 +1,14 @@
 import React from "react";
+import { Title, Section, SectionHeader } from "../../components/elements";
 
 function DashboardPage() {
-  return <div>Hello Dashboard!</div>;
+  return (
+    <Section>
+      <SectionHeader>
+        <Title>Hello Dashboard!</Title>
+      </SectionHeader>
+    </Section>
+  );
 }
 
 export default DashboardPage;

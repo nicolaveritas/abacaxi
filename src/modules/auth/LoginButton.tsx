@@ -18,9 +18,7 @@ const isGoogleLoginRespone = (
 
 function LoginButton() {
   const dispatch = useDispatch();
-  const idToken = useSelector<RootState>((state) =>
-    selectIdToken(state.authReducer)
-  );
+  const idToken = useSelector((state: RootState) => selectIdToken(state.auth));
 
   const onLoginSuccess = (
     response: GoogleLoginResponse | GoogleLoginResponseOffline
@@ -44,7 +42,7 @@ function LoginButton() {
   return (
     <GoogleLogin
       clientId={CLIENT_ID}
-      buttonText="Login"
+      buttonText="Login with google"
       onSuccess={onLoginSuccess}
       onFailure={onLoginFailure}
       cookiePolicy={"single_host_origin"}
