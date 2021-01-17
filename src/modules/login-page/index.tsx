@@ -25,7 +25,7 @@ function LoginPage() {
       <FormWrapper>
         <Header>
           <Logo />
-          <Text>Sign in</Text>
+          <Text>ABACAXI</Text>
         </Header>
         <LoginButton />
       </FormWrapper>

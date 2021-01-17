@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FlexColumn } from "../../components/elements";
 import { colors } from "../../components/theme";
+import abacaxi from "./abacaxi.jpg";
 
 export const StyledLoginPage = styled(FlexColumn)`
   width: 100vw;
@@ -18,10 +19,10 @@ export const Header = styled.div`
 `;
 
 export const Logo = styled.img.attrs({
-  src: "https://i.picsum.photos/id/665/200/200.jpg?hmac=hWcfvzYgHAwJFOUaHZa2oZpOOL7yx_x8Bnhq0dFVQRw",
+  src: abacaxi,
 })`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 20px;
   margin-bottom: 16px;
 `;
@@ -30,4 +31,5 @@ export const FormWrapper = styled.div`
   padding: 50px;
   background: white;
   border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
 `;
