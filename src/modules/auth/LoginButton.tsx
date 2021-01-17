@@ -7,7 +7,7 @@ import {
 } from "react-google-login";
 import { CLIENT_ID } from "./constants";
 import { useDispatch, useSelector } from "react-redux";
-import { setIdToken, selectIdToken } from "./redux";
+import { setTokens, selectIdToken } from "./redux";
 import { RootState } from "../../redux/store";
 
 const isGoogleLoginRespone = (
@@ -24,7 +24,7 @@ function LoginButton() {
     response: GoogleLoginResponse | GoogleLoginResponseOffline
   ) => {
     if (isGoogleLoginRespone(response)) {
-      dispatch(setIdToken(JSON.stringify(response.tokenId)));
+      dispatch(setTokens(response.tokenObj));
     }
   };
 

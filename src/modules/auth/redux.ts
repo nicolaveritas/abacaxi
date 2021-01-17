@@ -1,22 +1,27 @@
 import jwt_decode from "jwt-decode";
 
 // actions
-const SET_ID_TOKEN = "SET_ID_TOKEN" as const;
-const setIdToken = (idToken: string | null) => ({
-    type: SET_ID_TOKEN,
-    payload: idToken,
+const SET_TOKENS = "SET_TOKENS" as const;
+const setTokens = (tokenObj: { access_token: string; id_token: string } | null) => ({
+    type: SET_TOKENS,
+    payload: tokenObj,
 });
 
 // reducers 
 interface AuthModuleState {
     idToken: string | null;
+    accessToken: string | null;
 }
-const authReducer = (state = { idToken: null }, action: ReturnType<typeof setIdToken>): AuthModuleState => {
+const authReducer = (
+    state: AuthModuleState = { idToken: null, accessToken: null }, 
+    action: ReturnType<typeof setTokens>
+): AuthModuleState => {
     switch(action.type) {
-        case "SET_ID_TOKEN": {
+        case "SET_TOKENS": {
             return {
                 ...state,
-                idToken: action.payload
+                idToken: action.payload?.id_token ?? null,
+                accessToken: action.payload?.access_token ?? null
             }
         }
         default: {
@@ -27,15 +32,17 @@ const authReducer = (state = { idToken: null }, action: ReturnType<typeof setIdT
 
 // slectors
 const selectIdToken = (state: AuthModuleState) => state.idToken;
+const selectAccessToken = (state: AuthModuleState) => state.accessToken;
 const selectUserName = (state: AuthModuleState) => 
     state.idToken ? jwt_decode<{ name: string }>(state.idToken)?.name : null;
 const selectUserEmail = (state: AuthModuleState) => 
     state.idToken ? jwt_decode<{ email: string }>(state.idToken)?.email : null;
 
 export { 
-    setIdToken,
+    setTokens,
     authReducer,
     selectIdToken,
+    selectAccessToken,
     selectUserName,
     selectUserEmail,
 }

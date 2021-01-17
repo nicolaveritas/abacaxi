@@ -3,14 +3,14 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { GoogleLogout } from "react-google-login";
 import { CLIENT_ID } from "./constants";
-import { setIdToken } from "./redux";
+import { setTokens } from "./redux";
 
 function LogoutButton() {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const onLogoutSuccess = () => {
-    dispatch(setIdToken(null));
+    dispatch(setTokens(null));
     history.replace({ pathname: "/login" });
   };
 
