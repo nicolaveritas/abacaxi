@@ -1,6 +1,5 @@
 import { AnyAction, combineReducers } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { RootState } from '../../redux/store';
 import { fetchUserInfo as fetchUserInfoApi } from './api';
 import { UserInfo } from './types';
 

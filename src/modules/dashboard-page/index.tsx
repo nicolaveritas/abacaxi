@@ -7,7 +7,6 @@ import {
   SectionBody,
   Text,
 } from "../../components/elements";
-import { RootState } from "../../redux/store";
 import { selectStatus, selectUsers, fetchUsers } from "./redux";
 
 function DashboardPage() {

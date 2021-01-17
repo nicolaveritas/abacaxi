@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Text, SmallText } from "../../../../components/elements";
-import { RootState } from "../../../../redux/store";
 import LogoutButton from "../../../auth/LogoutButton";
 import { selectUserName, selectUserEmail } from "../../../auth/redux";
 import { StyledUserMenu, UserInfo } from "./elements";

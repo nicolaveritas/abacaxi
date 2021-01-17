@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
 import { selectIdToken } from "./redux";
 
 interface PrivateRouteProps {

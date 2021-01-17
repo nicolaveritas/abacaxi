@@ -6,7 +6,6 @@ import {
   SectionHeader,
   SectionBody,
 } from "../../components/elements";
-import { RootState } from "../../redux/store";
 import { fetchUserInfo, selectUserInfo } from "./redux";
 
 function SettingsPage() {

@@ -5,7 +5,7 @@ import { authReducer } from '../modules/auth/redux';
 import { dashboardReducer } from '../modules/dashboard-page/redux';
 import { settingsReducer } from '../modules/settings-page/redux';
 
-const rootReducer = combineReducers({ 
+export const rootReducer = combineReducers({ 
     auth: authReducer,
     dashboard: dashboardReducer,
     settings: settingsReducer,

@@ -8,7 +8,6 @@ import {
 import { CLIENT_ID } from "./constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setTokens, selectIdToken } from "./redux";
-import { RootState } from "../../redux/store";
 
 const isGoogleLoginRespone = (
   response: any

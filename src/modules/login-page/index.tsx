@@ -3,7 +3,6 @@ import LoginButton from "../auth/LoginButton";
 import { Redirect, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectIdToken } from "../auth/redux";
-import { RootState } from "../../redux/store";
 import { FormWrapper, Header, Logo, StyledLoginPage } from "./elements";
 import { Text } from "../../components/elements";
 
