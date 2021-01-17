@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectIdToken } from "./redux";
+import { selectIsAuthenticated } from "./redux";
 
 interface PrivateRouteProps {
   children: React.ReactNode;
@@ -9,12 +9,14 @@ interface PrivateRouteProps {
 }
 
 function ProtectedRoute({ children, ...rest }: PrivateRouteProps) {
-  const idToken = useSelector((state: RootState) => selectIdToken(state.auth));
+  const isAuthenticated = useSelector((state: RootState) =>
+    selectIsAuthenticated(state.auth)
+  );
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        idToken ? (
+        isAuthenticated ? (
           children
         ) : (
           <Redirect

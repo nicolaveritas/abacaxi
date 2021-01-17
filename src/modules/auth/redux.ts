@@ -32,9 +32,15 @@ const authReducer = (
 
 // slectors
 const selectIdToken = (state: AuthModuleState) => state.idToken;
+
+const selectIsAuthenticated = (state: AuthModuleState) =>
+    state.idToken && jwt_decode<{ exp: number }>(state.idToken)?.exp > (Date.now() / 1000);
+
 const selectAccessToken = (state: AuthModuleState) => state.accessToken;
+
 const selectUserName = (state: AuthModuleState) => 
     state.idToken ? jwt_decode<{ name: string }>(state.idToken)?.name : null;
+
 const selectUserEmail = (state: AuthModuleState) => 
     state.idToken ? jwt_decode<{ email: string }>(state.idToken)?.email : null;
 
@@ -42,6 +48,7 @@ export {
     setTokens,
     authReducer,
     selectIdToken,
+    selectIsAuthenticated,
     selectAccessToken,
     selectUserName,
     selectUserEmail,
