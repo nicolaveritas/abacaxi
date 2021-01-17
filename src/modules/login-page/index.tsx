@@ -9,6 +9,7 @@ import { Text } from "../../components/elements";
 function LoginPage() {
   const idToken = useSelector((state: RootState) => selectIdToken(state.auth));
   const location = useLocation<{ from: { pathname: string } }>();
+  const { from } = location.state || { from: { pathname: "/" } };
 
   return !idToken ? (
     <StyledLoginPage>
@@ -23,8 +24,8 @@ function LoginPage() {
   ) : (
     <Redirect
       to={{
-        pathname: "/",
-        state: { from: location },
+        pathname: from.pathname,
+        state: { from },
       }}
     />
   );
