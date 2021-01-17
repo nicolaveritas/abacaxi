@@ -1,4 +1,5 @@
-import { combineReducers } from 'redux';
+import { AnyAction, combineReducers } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 import { fetchUsers as fetchUsersApi } from './api';
 import { Users } from './types';
 
@@ -24,7 +25,7 @@ const fetchUsersFailure = (error: Error) => ({
 type FetchUsers = ReturnType<typeof fetchUsersRequest | typeof fetchUsersSuccess | typeof fetchUsersFailure>;
 
 // thunks
-const fetchUsers = () => async (dispatch: any) => {
+const fetchUsers = () => async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     dispatch(fetchUsersRequest())
     try {
         const users = await fetchUsersApi();
