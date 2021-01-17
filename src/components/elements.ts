@@ -38,3 +38,7 @@ export const SectionHeader = styled(Flex)`
     padding: 8px 16px;
     align-items: center;
 `;
+
+export const SectionBody = styled(FlexColumn)`
+    padding: 8px 16px;
+`;

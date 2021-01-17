@@ -1,17 +1,19 @@
-import { ActionType, createAction, getType } from "typesafe-actions";
 import jwt_decode from "jwt-decode";
 
 // actions
-const SET_ID_TOKEN = "SET_ID_TOKEN";
-const setIdToken = createAction(SET_ID_TOKEN)<string | null>();
+const SET_ID_TOKEN = "SET_ID_TOKEN" as const;
+const setIdToken = (idToken: string | null) => ({
+    type: SET_ID_TOKEN,
+    payload: idToken,
+});
 
 // reducers 
 interface AuthModuleState {
     idToken: string | null;
 }
-const authReducer = (state = { idToken: null }, action: ActionType<typeof setIdToken>): AuthModuleState => {
+const authReducer = (state = { idToken: null }, action: ReturnType<typeof setIdToken>): AuthModuleState => {
     switch(action.type) {
-        case getType(setIdToken): {
+        case "SET_ID_TOKEN": {
             return {
                 ...state,
                 idToken: action.payload
